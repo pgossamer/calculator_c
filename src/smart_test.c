@@ -3,105 +3,105 @@
 
 START_TEST(test_1) {
     char *str_st = "1+2/3";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = 1.0+2.0/3.0;
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_2) {
     char *str_st = "2*(1.1234567/2+-21.1234567/2)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = 2.0*(1.1234567/2.0+-21.1234567/2.0);
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_3) {
     char *str_st = "47.22+-273.3+4^4/736.2--233*42-74/4.3+-0.987+24*(1+3)/-2";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = 47.22+-273.3+pow(4.0, 4.0)/736.2-(-233.0)*42.0-74.0/4.3+-0.987+24.0*(1.0+3.0)/-2.0;
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_4) {
     char *str_st = "4^s(1)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = pow(4, sin(1));
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_5) {
     char *str_st = "-s(c(-2^2)*3)+6";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = -sin(cos(pow(-2, 2))*3)+6;
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_6) {
     char *str_st = "-5--3-2++2-q(21)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = -5-(-3)-2+(+2)-sqrt(21);
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_7) {
     char *str_st = "t(n(2))";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = tan(log(2));
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_8) {
     char *str_st = "#(0.2)*3-(12.21324*-3)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     double res_og = acos(0.2)*3.0-(12.21324*(-3.0));
     ck_assert_float_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_9) {
     char *str_st = "7m3+#(0.2)*3-(12.21324*-3)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     double res_og = fmod(7.0, 3.0)+acos(0.2)*3.0-(12.21324*(-3.0));
     ck_assert_float_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_10) {
     char *str_st = "!($(-0.22435))";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = atan(asin(-0.22435));
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_11) {
     char *str_st = "g(2+2.21+-3)*(1.1234567/2+-21.1234567/2)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = log10(2.0+2.21+-3.0)*(1.1234567/2.0+-21.1234567/2.0);
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_12) {
     char *str_st = "-1--3*(-3)+5-4";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = -1-(-3)*(-3)+5-4;
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_13) {
     char *str_st = "4^(8/4+3-2)";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = pow(4, 8/4+3-2);
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_14) {
     char *str_st = "5m5";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = fmod(5, 5);
     ck_assert_double_eq(result, res_og);
 }
 END_TEST
 START_TEST(test_15) {
     char *str_st = "3m(s(5))";
-    double result = s21_smart_calc(str_st, 0);
+    double result = _smart_calc(str_st, 0);
     long double res_og = fmod(3, sin(5));
     ck_assert_double_eq(result, res_og);
 }
@@ -199,7 +199,7 @@ END_TEST
 START_TEST(test_31) {
     char *str_st = "4^x";
     double x = 2.4;
-    double result = s21_smart_calc(str_st, x);
+    double result = _smart_calc(str_st, x);
     long double res_og = pow(4, 2.4);
     ck_assert_double_eq(result, res_og);
 }

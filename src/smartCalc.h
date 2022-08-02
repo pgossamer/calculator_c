@@ -20,7 +20,7 @@ typedef struct function {
   struct function *next;
 } Stack_f;
 
-double s21_smart_calc(char *str_st, double x);
+double _smart_calc(char *str_st, double x);
 
 void end_calc(Stack_c **list_chisel, Stack_f **list, char sym);
 void math_for_two_way(Stack_f **list, Stack_c **list_chisel);

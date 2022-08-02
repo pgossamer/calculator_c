@@ -1,6 +1,6 @@
 #include "smartCalc.h"
 
-double s21_smart_calc(char *str_st, double x) {
+double _smart_calc(char *str_st, double x) {
   Stack_f *list = NULL;
   Stack_c *list_chisel = NULL;
   char sym;

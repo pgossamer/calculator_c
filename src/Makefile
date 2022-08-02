@@ -35,21 +35,19 @@ tests: smartCalc.a
 	./test2
 
 gcov_report:
-	$(CC) --coverage smart_test.c -o s21_test smartCalc.c -lcheck
-	./s21_test
-	lcov -t "s21_test" -o s21_test.info -c -d .
-	genhtml -o report s21_test.info
+	$(CC) --coverage smart_test.c -o _test smartCalc.c -lcheck
+	./_test
+	lcov -t "_test" -o _test.info -c -d .
+	genhtml -o report _test.info
 	open ./report/index.html
 
 check: tests
-	@cp -f ../materials/CPPLINT.cfg CPPLINT.cfg
-	python ../materials/cpplint.py --extensions=c *.c
 	cppcheck --enable=all --suppress=missingIncludeSystem *.c
 	CK_FORK=no leaks --atExit -- ./test2
 
 clean:
 	@rm -rf *.o *.a *.gcda *.gcno *.info CPPLINT.cfg
-	@rm -rf s21_test report test test1 test2
+	@rm -rf _test report test test1 test2
 	@rm -rf ./$(BUILD)*.o ./$(BUILD)*.h ./$(BUILD)*.cpp ./$(BUILD)SmartCalc.pro
 	@rm -rf ./$(BUILD)Makefile ./$(BUILD)*.c ./$(BUILD)*.ui ./$(BUILD)*.icns
 

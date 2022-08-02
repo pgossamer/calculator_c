@@ -2,7 +2,7 @@
 
 #include "ui_mainwindow.h"
 
-extern "C" double s21_smart_calc(char *str_s, double x);
+extern "C" double _smart_calc(char *str_s, double x);
 extern "C" int validation(char *str);
 extern "C" int are_you_have_x(char *str);
 extern "C" int len_str(char *str);
@@ -84,7 +84,7 @@ void MainWindow::digit_result_pressed() {
   int len = len_str(res_str);
   if (error != 1 && len) {
     double x = ui->doubleSpinBox_just_x->value();
-    double res = s21_smart_calc(res_str, x);
+    double res = _smart_calc(res_str, x);
     QString res_s = QString::number(res, 'g', 7);
     ui->label->setText(res_s);
   } else {
@@ -147,7 +147,7 @@ void MainWindow::on_pushButton_stroit_graf_clicked() {
     double y_tmp = 0.0;
 
     for (double i = x_min; i < x_max; i += h) {
-      y_tmp = s21_smart_calc(res_str, i);
+      y_tmp = _smart_calc(res_str, i);
       if (y_tmp > y_min && y_tmp < y_max) {
         x.push_back(i);
         y.push_back(y_tmp);
